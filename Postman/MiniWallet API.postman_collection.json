@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "5f06894a-c30c-42bd-ae70-a2e9228ceb1f",
+		"name": "MiniWallet API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29873347"
+	},
+	"item": [
+		{
+			"name": "Create Wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"john.smith@gmail.com\",\r\n    \"mobileNumber\": \"9876543200\",\r\n    \"initialBalance\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7216/api/Wallet/create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7216",
+					"path": [
+						"api",
+						"Wallet",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Credit Wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"walletId\": \"015BD8BC-1176-49BF-B7DB-5C6467E33A2E\",\r\n    \"amount\": 20030,\r\n    \"referenceId\": \"CREDIT002\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7216/api/Transaction/credit",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7216",
+					"path": [
+						"api",
+						"Transaction",
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Debit Wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"walletId\": \"015BD8BC-1176-49BF-B7DB-5C6467E33A2E\",\r\n    \"amount\": 730,\r\n    \"referenceId\": \"DEBIT002\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7216/api/Transaction/debit",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7216",
+					"path": [
+						"api",
+						"Transaction",
+						"debit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer Wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fromWalletId\": \"015BD8BC-1176-49BF-B7DB-5C6467E33A2E\",\r\n    \"toWalletId\": \"0B3165B5-2570-4B1B-AE9A-609136E17EE5\",\r\n    \"amount\": 300,\r\n    \"referenceId\": \"TRANSFER002\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7216/api/Transaction/transfer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7216",
+					"path": [
+						"api",
+						"Transaction",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Balance",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7216/api/Wallet/0b3165b5-2570-4b1b-ae9a-609136e17ee5/balance",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7216",
+					"path": [
+						"api",
+						"Wallet",
+						"0b3165b5-2570-4b1b-ae9a-609136e17ee5",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transaction History",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7216/api/Wallet/015BD8BC-1176-49BF-B7DB-5C6467E33A2E/transactions?pageNumber=1&pageSize=10",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7216",
+					"path": [
+						"api",
+						"Wallet",
+						"015BD8BC-1176-49BF-B7DB-5C6467E33A2E",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

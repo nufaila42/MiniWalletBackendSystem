@@ -1,0 +1,63 @@
+CREATE DATABASE MiniWalletDB;
+GO
+
+USE MiniWalletDB;
+GO
+
+
+CREATE TABLE Wallets
+(
+    WalletId UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+
+    Name NVARCHAR(100) NOT NULL,
+
+    Email NVARCHAR(200) UNIQUE NOT NULL,
+
+    MobileNumber NVARCHAR(20) UNIQUE NOT NULL,
+
+    Balance DECIMAL(18,2) NOT NULL DEFAULT 0,
+
+    CreatedAt DATETIME2 DEFAULT GETUTCDATE(),
+
+    UpdatedAt DATETIME2 DEFAULT GETUTCDATE(),
+
+    RowVersion ROWVERSION
+);
+
+
+
+CREATE TABLE WalletTransactions
+(
+    TransactionId UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+
+    WalletId UNIQUEIDENTIFIER NOT NULL,
+
+    TransactionType VARCHAR(50),
+
+    Amount DECIMAL(18,2),
+
+    BalanceBefore DECIMAL(18,2),
+
+    BalanceAfter DECIMAL(18,2),
+
+    ReferenceId VARCHAR(100) UNIQUE,
+
+    Status VARCHAR(20),
+
+    CreatedAt DATETIME2 DEFAULT GETUTCDATE(),
+
+
+    CONSTRAINT FK_WalletTransaction
+    FOREIGN KEY(WalletId)
+    REFERENCES Wallets(WalletId)
+);
+
+
+
+CREATE INDEX IX_WalletTransactions_WalletId
+ON WalletTransactions(WalletId);
+
+
+
+CREATE INDEX IX_WalletTransactions_CreatedAt
+ON WalletTransactions(CreatedAt);
