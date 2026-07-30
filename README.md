@@ -799,8 +799,6 @@ Includes:
 * Transfer Wallet
 * Balance Check
 * Transaction History
-* Duplicate Transaction Tests
-* Validation Tests
 ---
 
 **Mini Wallet Backend System completed using ASP.NET Core Web API, C#, Entity Framework Core, and SQL Server.**
