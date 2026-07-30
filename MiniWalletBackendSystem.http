@@ -1,0 +1,6 @@
+@MiniWalletBackendSystem_HostAddress = http://localhost:5265
+
+GET {{MiniWalletBackendSystem_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
