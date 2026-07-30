@@ -1,8 +1,10 @@
 CREATE DATABASE MiniWalletDB;
 GO
 
+
 USE MiniWalletDB;
 GO
+
 
 
 CREATE TABLE Wallets
